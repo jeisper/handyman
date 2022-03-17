@@ -1,17 +1,13 @@
 import "./App.css";
-import { Flex } from "@chakra-ui/react";
-import { BrowserRouter as Route, Router, Routes } from "react-router-dom";
-import Landing from "./pages/landing";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
 
 function App() {
   return (
     <Router>
-      <Flex>
-        <Routes>
-          <Route path="/me" element={<Landing />} />
-          <Route path="/" element={<Landing />} />
-        </Routes>
-      </Flex>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </Router>
   );
 }
