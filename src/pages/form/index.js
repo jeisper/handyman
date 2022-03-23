@@ -1,7 +1,7 @@
 import React from "react";
 
-function Provider() {
-  return <div>Provider</div>;
+function Form() {
+  return <div>Form</div>;
 }
 
-export default Provider;
+export default Form;
