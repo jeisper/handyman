@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import handyman from "../../Assets/images/handyman.png";
 import customer from "../../Assets/images/customer.png";
 import NavBar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 function Landing() {
   const navigate = useNavigate();
@@ -22,7 +23,9 @@ function Landing() {
           h="100vh"
         >
           <Flex flexDir="column" m="10vh">
-            <Heading align="center">Easy HandyMan</Heading>
+            <Heading align="center" fontSize="3xl">
+              Easy HandyMan
+            </Heading>
             <Flex flexWrap="wrap">
               <Heading align="center">
                 The Place where you are your Own Boss or find the correct
@@ -85,6 +88,7 @@ function Landing() {
           </Flex>
         </Flex>
       </Flex>
+      <Footer />
     </Flex>
   );
 }

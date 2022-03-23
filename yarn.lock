@@ -1285,7 +1285,7 @@
     "@chakra-ui/transition" "1.4.7"
     "@chakra-ui/utils" "1.10.4"
 
-"@chakra-ui/modal@1.10.10":
+"@chakra-ui/modal@1.10.10", "@chakra-ui/modal@^1.10.10":
   version "1.10.10"
   resolved "https://registry.yarnpkg.com/@chakra-ui/modal/-/modal-1.10.10.tgz#dfdf932f333d83c4125fb2416ce811808dab1c28"
   integrity sha512-/OLnZhhGXQEaCqtrCCf2nu27mVxT/3Kd+NBNMKGZ4X70Dm6HD3x1Zrsto2hVo8l3kLEPRpkfpXhKu61doMc8zw==
