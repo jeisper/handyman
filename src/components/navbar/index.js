@@ -13,7 +13,7 @@ function NavBar() {
       flexWrap="wrap"
       align="center"
       justify="center"
-      bgColor="pink"
+      bgColor="grey"
     >
       <Image
         src={logo}

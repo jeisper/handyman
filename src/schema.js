@@ -2,7 +2,7 @@ const users = {
   data: [
     {
       googleID: "get from firebase",
-      userData: "",
+      userPhoto: "",
       profileData: {
         name: {
           fname: "",

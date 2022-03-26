@@ -9,13 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 
-function Summary({
-  formData,
-  updateFormData,
-  uploadDataToDatabase,
-  goNext,
-  goBack,
-}) {
+function Summary({ formData, updateFormData, goNext, goBack }) {
   const checkValidInput = () => {
     if (formData.summary === "") {
       alert("Insert Some Data to Proceed");
@@ -32,6 +26,7 @@ function Summary({
       mb="10"
       direction="column"
       boxShadow="dark-lg"
+      border="1px solid"
       borderRadius="10px"
     >
       <FormControl p="1vw" id="first-name" isRequired>
@@ -57,19 +52,19 @@ function Summary({
           m="2vw"
           fontSize="3vh"
           alignContent="left"
-          onClick={() => {
-            uploadDataToDatabase();
-          }}
+          // onClick={() => {
+          //   uploadDataToDatabase();
+          // }}
         >
-          Save
+          Submit
         </Button>
         <IconButton
           placeContent="right"
           m="2vw"
           onClick={() => {
-            if (checkValidInput()) {
-              goNext();
-            }
+            // if (checkValidInput()) {
+            goNext();
+            // }
           }}
         >
           <TiArrowRightOutline fontSize="5vh" />

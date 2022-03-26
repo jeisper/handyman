@@ -17,10 +17,15 @@ function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
   const [currentSkill, setCurrentSkill] = useState({
     title: "",
     list: "",
+    year: "",
   });
 
   const checkValidInput = () => {
-    if (currentSkill.title === "" || currentSkill.list === "") {
+    if (
+      currentSkill.title === "" ||
+      currentSkill.list === "" ||
+      currentSkill.year === ""
+    ) {
       alert("Please Insert all Data Where Required");
       return false;
     }
@@ -58,6 +63,18 @@ function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
                 }}
               />
             </Flex>
+            <Flex justify="center" direction="row">
+              <FormTextInput
+                label="Years of Experience"
+                placeholder="Years of Experience"
+                value={currentSkill ? currentSkill.year : ""}
+                onChange={(text) => {
+                  const copy = { ...currentSkill };
+                  copy.year = text;
+                  setCurrentSkill(copy);
+                }}
+              />
+            </Flex>
           </Flex>
         </ModalBody>
 
@@ -75,6 +92,7 @@ function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
                 updateFormData(copy);
                 onClose();
               }
+              console.log(currentSkill);
             }}
           >
             Add

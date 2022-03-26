@@ -9,13 +9,7 @@ import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 import React from "react";
 import SkillsModel from "./SkillsModel";
 import TextDesign from "./TextDesign";
-function Skills({
-  formData,
-  updateFormData,
-  goBack,
-  goNext,
-  uploadDataToDatabase,
-}) {
+function Skills({ formData, updateFormData, goBack, goNext }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Flex
@@ -45,6 +39,9 @@ function Skills({
               <Flex>
                 <TextDesign text="Description: " content={item.list} />
               </Flex>
+              <Flex>
+                <TextDesign text="Years of Experience: " content={item.year} />
+              </Flex>
             </Flex>
           );
         })}
@@ -61,9 +58,9 @@ function Skills({
           m="2vw"
           fontSize="3vh"
           alignContent="left"
-          onClick={() => {
-            uploadDataToDatabase();
-          }}
+          // onClick={() => {
+          //   uploadDataToDatabase();
+          // }}
         >
           Save
         </Button>

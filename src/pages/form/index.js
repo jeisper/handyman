@@ -1,8 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
-import Experience from "./Experience";
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 import Skills from "./Skills";
@@ -21,7 +20,6 @@ const defaultData = {
   },
   location: {
     city: "",
-    country: "",
     area: "",
   },
   summary: "",
@@ -30,19 +28,17 @@ const defaultData = {
     {
       title: "",
       list: ["", "", ""],
+      years: "",
     },
   ],
-  experience: {
-    years: "",
-  },
 };
 
 function Form() {
+  const navigate = useNavigate();
+
   const [currentStep, setCurrentStep] = useState(0);
   const [data, setData] = useState(null);
   const [formData, setFormData] = useState(defaultData);
-
-  const navigate = Navigate();
 
   let currentContent = <Flex>Loading</Flex>;
   const goNext = () => {
@@ -56,6 +52,10 @@ function Form() {
     setCurrentStep(currentStep - 1);
   };
 
+  const saveChange = async () => {
+    console.log(formData);
+  };
+
   switch (currentStep) {
     case 0:
       currentContent = (
@@ -67,29 +67,18 @@ function Form() {
         />
       );
       break;
+    // case 1:
+    //   currentContent = (
+    //     <ProfilePicture
+    //       formData={formData}
+    //       updateFormData={setFormData}
+    //       goNext={goNext}
+    //       goBack={goBack}
+    //     />
+    //   );
+    //   break;
+
     case 1:
-      currentContent = (
-        <ProfilePicture
-          formData={formData}
-          updateFormData={setFormData}
-          goNext={goNext}
-          goBack={goBack}
-        />
-      );
-      break;
-
-    case 2:
-      currentContent = (
-        <Summary
-          formData={formData}
-          updateFormData={setFormData}
-          goNext={goNext}
-          goBack={goBack}
-        />
-      );
-      break;
-
-    case 3:
       currentContent = (
         <Skills
           formData={formData}
@@ -99,21 +88,21 @@ function Form() {
         />
       );
       break;
-    case 4:
+    case 2:
       currentContent = (
-        <Experience
+        <Summary
           formData={formData}
           updateFormData={setFormData}
           goNext={goNext}
           goBack={goBack}
         />
       );
+
       break;
 
     default:
       break;
   }
-
   return (
     <Flex w="100%" flexDir="column">
       <NavBar />

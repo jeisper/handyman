@@ -3,12 +3,7 @@ import { TiArrowRightOutline } from "react-icons/ti";
 import React from "react";
 import FormTextInput from "./FormTextInput";
 
-function ProfileData({
-  formData,
-  updateFormData,
-  goBack,
-  goNext,
-}) {
+function ProfileData({ formData, updateFormData, goBack, goNext }) {
   console.log(formData);
 
   const checkValidInput = () => {
@@ -119,9 +114,9 @@ function ProfileData({
         <IconButton
           m="2vw"
           onClick={() => {
-            if (checkValidInput()) {
-              goNext();
-            }
+            // if (checkValidInput()) {
+            goNext();
+            // }
           }}
         >
           <TiArrowRightOutline fontSize="5vh" />
