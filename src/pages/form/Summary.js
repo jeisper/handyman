@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 
-function Summary({ formData, updateFormData, goNext, goBack }) {
+function Summary({ formData, updateFormData, saveChange, goNext, goBack }) {
   const checkValidInput = () => {
     if (formData.summary === "") {
       alert("Insert Some Data to Proceed");
@@ -52,23 +52,12 @@ function Summary({ formData, updateFormData, goNext, goBack }) {
           m="2vw"
           fontSize="3vh"
           alignContent="left"
-          // onClick={() => {
-          //   uploadDataToDatabase();
-          // }}
+          onClick={() => {
+            saveChange();
+          }}
         >
           Submit
         </Button>
-        <IconButton
-          placeContent="right"
-          m="2vw"
-          onClick={() => {
-            // if (checkValidInput()) {
-            goNext();
-            // }
-          }}
-        >
-          <TiArrowRightOutline fontSize="5vh" />
-        </IconButton>
       </Flex>
     </Flex>
   );

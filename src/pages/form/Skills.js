@@ -32,15 +32,13 @@ function Skills({ formData, updateFormData, goBack, goNext }) {
               borderRadius="10"
               w="100%"
               my="2"
+              key={item.title}
             >
               <Flex>
                 <TextDesign text="Skill Title: " content={item.title} />
               </Flex>
               <Flex>
-                <TextDesign text="Description: " content={item.list} />
-              </Flex>
-              <Flex>
-                <TextDesign text="Years of Experience: " content={item.year} />
+                <TextDesign text="Description: " content={item.desc} />
               </Flex>
             </Flex>
           );

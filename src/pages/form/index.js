@@ -1,14 +1,19 @@
 import { Flex } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { async } from "@firebase/util";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore/lite";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
+import { db } from "../../firebase";
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 import Skills from "./Skills";
 import Summary from "./Summary";
 
 const defaultData = {
-  googleID: "get from firebase",
+  googleID: "",
+  profileData: "",
   profileImg: "",
   name: {
     fname: "",
@@ -27,18 +32,42 @@ const defaultData = {
   skills: [
     {
       title: "",
-      list: ["", "", ""],
-      years: "",
+      desc: "",
     },
   ],
 };
+
+let uid = "";
 
 function Form() {
   const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(0);
-  const [data, setData] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const [formData, setFormData] = useState(defaultData);
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+        defaultData.googleID = user.uid;
+        defaultData.profileImg = user.photoURL;
+
+        console.log("User signed in with id: ", user.uid);
+      } else {
+        console.log("User is not signed in ");
+      }
+    });
+  }, []);
+
+  const saveChange = async () => {
+    console.log(currentUser);
+    await setDoc(doc(db, "handyman-collection", formData.googleID + ""), {
+      ...formData,
+    });
+    console.log("Data sent to database");
+  };
 
   let currentContent = <Flex>Loading</Flex>;
   const goNext = () => {
@@ -50,10 +79,6 @@ function Form() {
       navigate("/");
     }
     setCurrentStep(currentStep - 1);
-  };
-
-  const saveChange = async () => {
-    console.log(formData);
   };
 
   switch (currentStep) {
@@ -93,6 +118,7 @@ function Form() {
         <Summary
           formData={formData}
           updateFormData={setFormData}
+          saveChange={saveChange}
           goNext={goNext}
           goBack={goBack}
         />

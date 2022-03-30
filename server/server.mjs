@@ -1,24 +1,24 @@
 import express from "express";
 import cors from "cors";
-import axios from "axios";
-
-const PORT = 9000;
+// import { User } from "../src/firebase";
 
 const app = express();
+
+const PORT = 9000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const pageRouter = express.Router();
+const userRouter = express.Router();
+const customerRouter = express.Router();
 
-app.use("/", pageRouter);
+app.use("/user", userRouter);
+app.use("customer", customerRouter);
 
-pageRouter.route("/");
-
-// postsRouter.route("/").get(getData);
-// ticketsRouter.route("/").post(getPage);
-// ticketsRouter.route("/:id").get(getTicket);
+// userRouter.route("/").post(sendDataToDataBase);
+// userRouter.route("/:id").get(getUserData);
+// customerRouter.route("/").get(getUserData);
 
 app.get("/", (req, res) => {
   res.send({

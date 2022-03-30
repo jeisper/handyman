@@ -1,25 +1,11 @@
-import {
-  Button,
-  Flex,
-  Image,
-  Modal,
-  ModalOverlay,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Button, Flex, Image } from "@chakra-ui/react";
 import { getAuth, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth, provider } from "../../firebase";
 import { IoPerson } from "react-icons/io5";
-import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 
 function SignIn() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [currentUser, setCurrentUser] = useState(null);
 
   const nagivate = useNavigate();
@@ -43,8 +29,6 @@ function SignIn() {
       .then((result) => {
         const user = result.user;
         setCurrentUser(user);
-
-        onClose();
       })
       .catch((error) => {
         console.log(error);
@@ -75,29 +59,6 @@ function SignIn() {
           Sign In
         </Button>
       )}
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay>
-          <ModalContent>
-            <ModalHeader>Easy HandyMan</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              To start working, signIn using your google account.
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button
-                variant="ghost"
-                leftIcon={<FcGoogle />}
-                onClick={signInUser}
-              >
-                Sign In
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </ModalOverlay>
-      </Modal>
     </Flex>
   );
 }

@@ -12,7 +12,7 @@ function ProfileData({ formData, updateFormData, goBack, goNext }) {
       formData.name.lname === "" ||
       formData.contact.phone === "" ||
       formData.contact.email === "" ||
-      formData.location.country === "" ||
+      formData.location.area === "" ||
       formData.location.city === ""
     ) {
       alert("Please Insert all Date Required");
@@ -85,12 +85,12 @@ function ProfileData({ formData, updateFormData, goBack, goNext }) {
       />
       <Flex justify="center">
         <FormTextInput
-          label="Country"
-          placeholder="Country"
-          value={formData && formData.location ? formData.location.country : ""}
+          label="Area"
+          placeholder="Area"
+          value={formData && formData.location ? formData.location.area : ""}
           onChange={(text) => {
             const copy = { ...formData };
-            copy.location.country = text;
+            copy.location.area = text;
             updateFormData(copy);
           }}
         />

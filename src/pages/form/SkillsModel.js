@@ -16,16 +16,11 @@ import FormTextInput from "./FormTextInput";
 function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
   const [currentSkill, setCurrentSkill] = useState({
     title: "",
-    list: "",
-    year: "",
+    desc: "",
   });
 
   const checkValidInput = () => {
-    if (
-      currentSkill.title === "" ||
-      currentSkill.list === "" ||
-      currentSkill.year === ""
-    ) {
+    if (currentSkill.title === "" || currentSkill.desc === "") {
       alert("Please Insert all Data Where Required");
       return false;
     }
@@ -51,33 +46,20 @@ function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
                 setCurrentSkill(copy);
               }}
             />
-            <Flex justify="center" direction="row">
-              <FormTextInput
-                label="Description"
-                placeholder="Description"
-                value={currentSkill ? currentSkill.list : ""}
-                onChange={(text) => {
-                  const copy = { ...currentSkill };
-                  copy.list = text;
-                  setCurrentSkill(copy);
-                }}
-              />
-            </Flex>
-            <Flex justify="center" direction="row">
-              <FormTextInput
-                label="Years of Experience"
-                placeholder="Years of Experience"
-                value={currentSkill ? currentSkill.year : ""}
-                onChange={(text) => {
-                  const copy = { ...currentSkill };
-                  copy.year = text;
-                  setCurrentSkill(copy);
-                }}
-              />
-            </Flex>
+          </Flex>
+          <Flex justify="center" direction="row">
+            <FormTextInput
+              label="Description"
+              placeholder="Description"
+              value={currentSkill ? currentSkill.desc : ""}
+              onChange={(text) => {
+                const copy = { ...currentSkill };
+                copy.desc = text;
+                setCurrentSkill(copy);
+              }}
+            />
           </Flex>
         </ModalBody>
-
         <ModalFooter>
           <Button onClick={onClose}>Cancel</Button>
           <Spacer />
