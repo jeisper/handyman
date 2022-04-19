@@ -1,89 +1,106 @@
-import { Button, Flex, Heading, Image, Spacer } from "@chakra-ui/react";
+import { Button, Flex, Heading, Image, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import handyman from "../../Assets/images/handyman.png";
-import customer from "../../Assets/images/customer.png";
 import NavBar from "../../components/navbar";
 import Footer from "../../components/footer";
+import bg from "../../Assets/images/handyback2.jpg";
 
 function Landing() {
   const navigate = useNavigate();
 
   return (
-    <Flex w="100%" flexDir="column" bgColor="red">
+    <Flex w="100%" flexDir="column">
       <NavBar />
-      <Flex w="100%" h="100vh" flexWrap="wrap" flexDir="column">
-        <Flex
-          w="100%"
-          flexWrap="wrap"
-          flexDir="column"
-          bgColor="blue.500"
-          align="center"
-          justify="center"
-          h="150vh"
-        >
-          <Flex flexDir="column" m="10vh">
-            <Heading align="center" fontSize="5xl">
-              Easy HandyMan
-            </Heading>
-            <Flex flexWrap="wrap">
-              <Heading align="center" marginTop="1vh">
-                The Place where you are your Own Boss or find the correct
-                HandyMan for your house
-              </Heading>
-            </Flex>
-          </Flex>
-          <Flex flexDir="column">
-            {/* <Heading fontSize="7xl">
-              Are you a Handyman Looking for Customers?
-            </Heading> */}
-            <Flex flexDir="row">
-              <Image src={handyman} alt="logo" h="30vh" mr="" />
+      <Flex
+        w="100%"
+        minH="100vh"
+        flexWrap="wrap"
+        flexDir="column"
+        bgImage={bg}
+        bgRepeat="no-repeat"
+        bgSize="100%"
+      >
+        <Flex mt="20vh">
+          <Flex
+            // bg="pink"
+            w="100%"
+            h="100%"
+          >
+            <Flex
+              // bg="red"
+              w="50%"
+              h="50%"
+              flexDir="column"
+              color="white"
+            >
+              <Flex flexDir="column" ml="10vw">
+                <Heading fontSize="5xl">Easy Handyman</Heading>
+                <Text fontSize="2xl">A handyman`s best pal</Text>
+              </Flex>
+              <Spacer />
               <Flex flexDir="column">
-                <Flex flexDir="column" marginLeft="40vh" marginTop="20vh">
-                  <Heading fontSize="3xl">Find your HandyMan!</Heading>
-                  <Button
-                    bg="yellow"
-                    w="10vw"
-                    h="5vh"
-                    mx="8vh"
-                    my="2vh"
-                    color="black"
-                    fontSize="1xl"
+                <Text
+                  flexWrap="wrap"
+                  ml="10vw"
+                  mr="15vw"
+                  fontSize="2xl"
+                  mt="15vh"
+                >
+                  Are you a handyman looking to advertise your services?
+                </Text>
+                <Button
+                  bg="blue.500"
+                  w="10vw"
+                  h="5vh"
+                  mx="8vh"
+                  ml="15vw"
+                  color="black"
+                  fontSize="1xl"
+                  onClick={() => {
+                    navigate("/form");
+                  }}
+                >
+                  Sign up
+                </Button>
+              </Flex>
+            </Flex>
+            <Spacer />
+            <Flex
+              // bg="blue"
+              w="50%"
+              h="50%"
+              flexDir="column"
+              color="white"
+              fontSize="1xl"
+            >
+              <Flex
+                flexDir="column"
+                m="2"
+                flexWrap="wrap"
+                ml="10vw"
+                mr="10vw"
+                fontSize="2xl"
+              >
+                <Flex marginBottom="7vh">
+                  Is your home in need of maintanance? Repairs? If so, Easy
+                  Handyman is the platform for you. This platorm connects
+                  customers to reliable and skilled handymen in your area.
+                </Flex>
+                <Flex marginBottom="7vh">
+                  No more having to ask around for recommendations, Easy
+                  Handyman does it all for you.
+                </Flex>
+                <Flex>
+                  <Flex
+                    color="blue.500"
+                    mr="1vw"
                     onClick={() => {
                       navigate("/customer");
                     }}
                   >
-                    Get Started
-                  </Button>
-                </Flex>
-              </Flex>
-            </Flex>
-            <Flex flexDir="column">
-              {/* <Heading fontSize="7xl" my="30" marginLeft="30vw">
-                Are you a Customer looking for a HandyMan?
-              </Heading> */}
-              <Flex flexDir="row">
-                <Flex flexDir="column" marginRight="25vh">
-                  <Heading fontSize="3xl">Become your Own BOSS</Heading>
-                  <Button
-                    bg="yellow"
-                    w="10vw"
-                    h="5vh"
-                    my="2vh"
-                    color="black"
-                    mx="8vh"
-                    fontSize="1xl"
-                    borderRadius="5%"
-                    onClick={() => {
-                      navigate("/form");
-                    }}
-                  >
-                    Get Started
-                  </Button>
-                </Flex>
-                <Flex>
-                  <Image src={customer} alt="logo" ml="3vh" h="30vh" />
+                    Start browsing
+                  </Flex>
+                  <Flex> handyman services now </Flex>
                 </Flex>
               </Flex>
             </Flex>

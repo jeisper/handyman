@@ -51,8 +51,8 @@ function SignIn() {
       ) : (
         <Button
           leftIcon={<IoPerson />}
-          color="white"
-          bgColor="blue"
+          color="black"
+          bgColor="blue.500"
           p="5"
           onClick={signInUser}
         >

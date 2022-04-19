@@ -31,6 +31,7 @@ function Work({
         {formData.work.map((item) => {
           return (
             <Flex
+              bg="white"
               justify="center"
               direction="column"
               p="5"

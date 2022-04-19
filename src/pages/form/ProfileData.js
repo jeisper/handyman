@@ -35,6 +35,7 @@ function ProfileData({ formData, updateFormData, goBack, goNext }) {
   };
   return (
     <Flex
+      bg="white"
       justify="center"
       w="50%"
       p="10"

@@ -1,5 +1,4 @@
 import { Flex } from "@chakra-ui/react";
-import { async } from "@firebase/util";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore/lite";
 import React, { useEffect, useState } from "react";
@@ -7,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
 import { db } from "../../firebase";
 import ProfileData from "./ProfileData";
-import ProfilePicture from "./ProfilePicture";
 import Skills from "./Skills";
 import Summary from "./Summary";
+import bg from "../../Assets/images/handyback2.jpg";
 
 const defaultData = {
   googleID: "",
@@ -53,6 +52,7 @@ function Form() {
         setCurrentUser(user);
         defaultData.googleID = user.uid;
         defaultData.profileImg = user.photoURL;
+        defaultData.profileData = user;
 
         console.log("User signed in with id: ", user.uid);
       } else {
@@ -70,6 +70,7 @@ function Form() {
   };
 
   let currentContent = <Flex>Loading</Flex>;
+
   const goNext = () => {
     setCurrentStep(currentStep + 1);
   };
@@ -132,8 +133,18 @@ function Form() {
   return (
     <Flex w="100%" flexDir="column">
       <NavBar />
-      <Flex w="100%" justify="center">
-        {currentContent}
+      <Flex
+        w="100%"
+        minH="100vh"
+        flexWrap="wrap"
+        flexDir="column"
+        bgImage={bg}
+        bgRepeat="no-repeat"
+        bgSize="100%"
+      >
+        <Flex w="100%" justify="center">
+          {currentContent}
+        </Flex>
       </Flex>
     </Flex>
   );

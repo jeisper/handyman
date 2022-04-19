@@ -6,10 +6,10 @@ function Footer() {
     <Flex
       w="100%"
       h="15vh"
-      bg="#EAD657"
-      mt="50"
+      bg="black"
       justify="center"
       align="center"
+      color="white"
     >
       <Text fontSize="4xl" as="em">
         &copy; Easy HandyMan

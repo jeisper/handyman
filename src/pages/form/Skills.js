@@ -20,8 +20,9 @@ function Skills({ formData, updateFormData, goBack, goNext }) {
       direction="column"
       boxShadow="dark-lg"
       borderRadius="10px"
+      bg="white"
     >
-      <Flex flexDir="column">
+      <Flex flexDir="column" bg="white">
         {formData.skills.map((item) => {
           return (
             <Flex

@@ -20,6 +20,7 @@ function Summary({ formData, updateFormData, saveChange, goNext, goBack }) {
   };
   return (
     <Flex
+      bg="white"
       justify="center"
       w="50%"
       p="10"
