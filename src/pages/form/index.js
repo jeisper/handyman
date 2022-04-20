@@ -53,18 +53,6 @@ function Form() {
     });
   }, []);
 
-  // const saveChange = async () => {
-  //   console.log("User test: ", currentUser);
-  //   try {
-  //     await addDoc(doc(db, "handyman-collection", formData.googleID + ""), {
-  //       ...formData,
-  //     });
-  //     console.log("Data sent to database");
-  //   } catch (e) {
-  //     console.log("error: ", e);
-  //   }
-  // };
-
   const saveChange = async () => {
     try {
       console.log(formData);
@@ -104,17 +92,6 @@ function Form() {
         />
       );
       break;
-    // case 1:
-    //   currentContent = (
-    //     <ProfilePicture
-    //       formData={formData}
-    //       updateFormData={setFormData}
-    //       goNext={goNext}
-    //       goBack={goBack}
-    //     />
-    //   );
-    //   break;
-
     case 1:
       currentContent = (
         <Skills
@@ -153,7 +130,7 @@ function Form() {
         bgRepeat="no-repeat"
         bgSize="100%"
       >
-        <Flex w="100%" justify="center">
+        <Flex w="100%" justify="center" mt="10vh">
           {currentContent}
         </Flex>
       </Flex>

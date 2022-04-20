@@ -1,7 +1,11 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
+
 import React from "react";
+import CardModal from "./CardModal";
 
 function Card(data) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Flex
       boxShadow="dark-lg"
@@ -13,6 +17,9 @@ function Card(data) {
       w="20vw"
       flexDir="column"
       color="black"
+      onClick={() => {
+        onOpen();
+      }}
     >
       <Flex my="1" ml="3">
         Name : {data.data.name.fname + " " + data.data.name.lname}
@@ -21,16 +28,20 @@ function Card(data) {
         Area : {data.data.location.area}
       </Flex>
       <Flex my="1" ml="3">
-        Job : {data.data.skills[0].title}
+        Category : {data.data.skills[0].title}
       </Flex>
       <Flex my="1" ml="3">
-        Experience : {data.data.skills[0].desc}
+        Experience : {data.data.skills[0].desc + " Years"}
       </Flex>
-      <Flex justifyContent="center" my="1">
-        <Flex border="1px" justifyContent="center" w="10vw" borderRadius="10">
-          Contact
-        </Flex>
+      <Flex my="1" ml="3">
+        Review :
       </Flex>
+      <CardModal
+        data={data}
+        onClose={onClose}
+        onOpen={onOpen}
+        isOpen={isOpen}
+      />
     </Flex>
   );
 }

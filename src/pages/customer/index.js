@@ -9,31 +9,6 @@ import { db } from "../../firebase";
 function Customer() {
   const [handyMan, setHandyMan] = useState([]);
 
-  // export async function getUser(userID, callback) {
-  //   const docRef = doc(db, "users", userID + "");
-  //   const docSnap = await getDoc(docRef);
-
-  //   if (docSnap.exists()) {
-  //     console.log("Document data:", docSnap.data());
-  //     callback({ id: docSnap.id, ...docSnap.data() });
-  //   } else {
-  //     // doc.data() will be undefined in this case
-  //     console.log("No such document!");
-  //     callback(null);
-  //   }
-  // }
-
-  // export async function getAllUsers(callback) {
-  //   const allUsers = await getDocs(collection(db, "users"));
-  //   const usersArray = [];
-  //   allUsers.forEach((doc) => {
-  //     // doc.data() is never undefined for query doc snapshots
-  //     usersArray.push({ id: doc.id, ...doc.data() });
-  //     console.log(doc.id, " => ", doc.data());
-  //   });
-  //   callback(usersArray);
-  // }
-
   useEffect(() => {
     const getAllData = async () => {
       const allUsers = await getDocs(collection(db, "handyman-collection"));

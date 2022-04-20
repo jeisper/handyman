@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
 import React from "react";
-import SkillsModel from "./SkillsModel";
+import SkillsModal from "./SkillsModel";
 import TextDesign from "./TextDesign";
 function Skills({ formData, updateFormData, goBack, goNext }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -71,7 +71,7 @@ function Skills({ formData, updateFormData, goBack, goNext }) {
           <TiArrowRightOutline fontSize="35px" />
         </IconButton>
       </Flex>
-      <SkillsModel
+      <SkillsModal
         formData={formData}
         updateFormData={updateFormData}
         onClose={onClose}

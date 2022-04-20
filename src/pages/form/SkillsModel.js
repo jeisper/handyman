@@ -13,7 +13,7 @@ import {
 import React, { useState } from "react";
 import FormTextInput from "./FormTextInput";
 
-function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
+function SkillsModal({ formData, updateFormData, isOpen, onClose }) {
   const [currentSkill, setCurrentSkill] = useState({
     title: "",
     desc: "",
@@ -31,7 +31,7 @@ function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent bg="white">
         <ModalHeader>Skills</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -85,4 +85,4 @@ function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
   );
 }
 
-export default SkillsModel;
+export default SkillsModal;
