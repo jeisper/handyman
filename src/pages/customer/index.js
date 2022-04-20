@@ -1,5 +1,5 @@
 import { Button, Flex, Heading, Select } from "@chakra-ui/react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore/lite";
 import React, { useEffect, useState } from "react";
 import bg from "../../Assets/images/handyback2.jpg";
 import Card from "../../components/card";
@@ -9,24 +9,46 @@ import { db } from "../../firebase";
 function Customer() {
   const [handyMan, setHandyMan] = useState([]);
 
+  // export async function getUser(userID, callback) {
+  //   const docRef = doc(db, "users", userID + "");
+  //   const docSnap = await getDoc(docRef);
+
+  //   if (docSnap.exists()) {
+  //     console.log("Document data:", docSnap.data());
+  //     callback({ id: docSnap.id, ...docSnap.data() });
+  //   } else {
+  //     // doc.data() will be undefined in this case
+  //     console.log("No such document!");
+  //     callback(null);
+  //   }
+  // }
+
+  // export async function getAllUsers(callback) {
+  //   const allUsers = await getDocs(collection(db, "users"));
+  //   const usersArray = [];
+  //   allUsers.forEach((doc) => {
+  //     // doc.data() is never undefined for query doc snapshots
+  //     usersArray.push({ id: doc.id, ...doc.data() });
+  //     console.log(doc.id, " => ", doc.data());
+  //   });
+  //   callback(usersArray);
+  // }
+
   useEffect(() => {
     const getAllData = async () => {
-      const querySnapshot = await getDocs(
-        collection(db, "handyman-collection")
-      );
-      querySnapshot.forEach((doc) => {
-        const newHandyMan = [...handyMan, doc.data()];
-        setHandyMan(newHandyMan);
-        // setHandyMan([doc.data()]);
-        // doc.data() is never undefined for query doc snapshots
+      const allUsers = await getDocs(collection(db, "handyman-collection"));
+      const usersArray = [];
+      allUsers.forEach((doc) => {
+        usersArray.push({ id: doc.id, ...doc.data() });
         console.log(doc.id, " => ", doc.data());
       });
+      setHandyMan(usersArray);
     };
 
-    getAllData().catch(console.error);
-
-    console.log("line2: ", handyMan);
+    getAllData();
   }, []);
+
+  console.log("line2: ", handyMan);
 
   return (
     <Flex w="100%" flexDir="column">
@@ -99,10 +121,10 @@ function Customer() {
           </Flex>
         </Flex>
         <Flex justifyContent="center" flexWrap="wrap">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {handyMan &&
+            handyMan.map((handyMan, index) => {
+              return <Card data={handyMan} key={index + handyMan.id} />;
+            })}
         </Flex>
       </Flex>
     </Flex>

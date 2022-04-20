@@ -23,27 +23,31 @@ function Skills({ formData, updateFormData, goBack, goNext }) {
       bg="white"
     >
       <Flex flexDir="column" bg="white">
-        {formData.skills.map((item) => {
-          return (
-            <Flex
-              justify="center"
-              direction="column"
-              p="5"
-              boxShadow="dark-lg"
-              borderRadius="10"
-              w="100%"
-              my="2"
-              key={item.title}
-            >
-              <Flex>
-                <TextDesign text="Skill Title: " content={item.title} />
+        {formData.skills.length > 0 &&
+          formData.skills.map((item) => {
+            return (
+              <Flex
+                justify="center"
+                direction="column"
+                p="5"
+                boxShadow="dark-lg"
+                borderRadius="10"
+                w="100%"
+                my="2"
+                key={item.title}
+              >
+                <Flex>
+                  <TextDesign text="Skill Title: " content={item.title} />
+                </Flex>
+                <Flex>
+                  <TextDesign
+                    text="Years of Experience: "
+                    content={item.desc}
+                  />
+                </Flex>
               </Flex>
-              <Flex>
-                <TextDesign text="Description: " content={item.desc} />
-              </Flex>
-            </Flex>
-          );
-        })}
+            );
+          })}
       </Flex>
       <Button justify="center" w="90%" m="2vw" fontSize="lg" onClick={onOpen}>
         Add Skill

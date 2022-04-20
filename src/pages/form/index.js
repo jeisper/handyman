@@ -9,11 +9,9 @@ import ProfileData from "./ProfileData";
 import Skills from "./Skills";
 import Summary from "./Summary";
 import bg from "../../Assets/images/handyback2.jpg";
+import { addDoc } from "firebase/firestore";
 
 const defaultData = {
-  googleID: "",
-  profileData: "",
-  profileImg: "",
   name: {
     fname: "",
     lname: "",
@@ -29,14 +27,12 @@ const defaultData = {
   summary: "",
 
   skills: [
-    {
-      title: "",
-      desc: "",
-    },
+    // {
+    //   title: "",
+    //   desc: "",
+    // },
   ],
 };
-
-let uid = "";
 
 function Form() {
   const navigate = useNavigate();
@@ -50,10 +46,6 @@ function Form() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-        defaultData.googleID = user.uid;
-        defaultData.profileImg = user.photoURL;
-        defaultData.profileData = user;
-
         console.log("User signed in with id: ", user.uid);
       } else {
         console.log("User is not signed in ");
@@ -61,12 +53,31 @@ function Form() {
     });
   }, []);
 
+  // const saveChange = async () => {
+  //   console.log("User test: ", currentUser);
+  //   try {
+  //     await addDoc(doc(db, "handyman-collection", formData.googleID + ""), {
+  //       ...formData,
+  //     });
+  //     console.log("Data sent to database");
+  //   } catch (e) {
+  //     console.log("error: ", e);
+  //   }
+  // };
+
   const saveChange = async () => {
-    console.log(currentUser);
-    await setDoc(doc(db, "handyman-collection", formData.googleID + ""), {
-      ...formData,
-    });
-    console.log("Data sent to database");
+    try {
+      console.log(formData);
+      await setDoc(
+        doc(db, "handyman-collection", currentUser.uid + ""),
+        formData,
+        {
+          merge: true,
+        }
+      );
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
   let currentContent = <Flex>Loading</Flex>;

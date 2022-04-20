@@ -49,8 +49,8 @@ function SkillsModel({ formData, updateFormData, isOpen, onClose }) {
           </Flex>
           <Flex justify="center" direction="row">
             <FormTextInput
-              label="Description"
-              placeholder="Description"
+              label="Years of Experience"
+              placeholder="Years of Experience"
               value={currentSkill ? currentSkill.desc : ""}
               onChange={(text) => {
                 const copy = { ...currentSkill };
