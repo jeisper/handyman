@@ -21,10 +21,10 @@ function Card(data) {
         Area : {data.data.location.area}
       </Flex>
       <Flex my="1" ml="3">
-        Job : {data.data.skills[1].title}
+        Job : {data.data.skills[0].title}
       </Flex>
       <Flex my="1" ml="3">
-        Experience : {data.data.skills[1].desc}
+        Experience : {data.data.skills[0].desc}
       </Flex>
       <Flex justifyContent="center" my="1">
         <Flex border="1px" justifyContent="center" w="10vw" borderRadius="10">
