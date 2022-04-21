@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
 import Footer from "../../components/footer";
 import bg from "../../Assets/images/handyback2.jpg";
+import newbg from "../../Assets/images/new_bg.jpeg";
 
 function Landing() {
   const navigate = useNavigate();
@@ -16,9 +17,9 @@ function Landing() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={bg}
+        bgImage={newbg}
         bgRepeat="no-repeat"
-        bgSize="100%"
+        bgSize="cover"
       >
         <Flex mt="20vh">
           <Flex

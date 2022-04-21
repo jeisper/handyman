@@ -8,8 +8,10 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 
 function Summary({ formData, updateFormData, saveChange, goNext, goBack }) {
+  const navigate = useNavigate();
   const checkValidInput = () => {
     if (formData.summary === "") {
       alert("Insert Some Data to Proceed");

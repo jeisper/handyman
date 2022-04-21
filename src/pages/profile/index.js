@@ -4,6 +4,7 @@ import {
   FormControl,
   FormLabel,
   Image,
+  Spacer,
   Textarea,
   useToast,
 } from "@chakra-ui/react";
@@ -12,10 +13,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
 import bg from "../../Assets/images/handyback2.jpg";
-import { doc, getDoc } from "firebase/firestore/lite";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore/lite";
 import { db } from "../../firebase";
 import FormTextInputNotRequired from "../form/FormTextInput";
 import FormTextInput from "../form/FormTextInput";
+import { async } from "@firebase/util";
+import newbg from "../../Assets/images/new_bg.jpeg";
 
 function Profile() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -60,6 +63,33 @@ function Profile() {
   console.log("The user is:", currentUser);
   console.log("The data is:", profileData);
 
+  const deleteProfileData = async () => {
+    try {
+      await deleteDoc(doc(db, "handyman-collection", currentUser.uid + ""));
+      console.log("data was deleted");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
+  const saveChange = async () => {
+    try {
+      console.log(profileData);
+      await setDoc(
+        doc(db, "handyman-collection", currentUser.uid + ""),
+
+        profileData,
+
+        {
+          merge: true,
+        }
+      );
+      console.log("data was updated");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
   return currentUser && profileData ? (
     <Flex w="100%" flexDir="column">
       <NavBar />
@@ -68,7 +98,7 @@ function Profile() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={bg}
+        bgImage={newbg}
         bgRepeat="no-repeat"
         bgSize="cover"
       >
@@ -238,20 +268,51 @@ function Profile() {
                 />
               </FormControl>
             </Flex>
-
-            <Button
-              mt="6"
-              p="6"
-              bg="blue.400"
-              w="40%"
-              fontWeight="bold"
-              onClick={() => {
-                navigate("/");
-                signUserOut();
-              }}
-            >
-              Sign Out
-            </Button>
+            <Flex>
+              <Button
+                mt="6"
+                mx="3"
+                p="6"
+                bg="blue.400"
+                w="25%"
+                fontWeight="bold"
+                onClick={() => {
+                  deleteProfileData();
+                  navigate("/");
+                }}
+              >
+                Delete profile
+              </Button>
+              <Spacer />
+              <Button
+                mt="6"
+                mx="3"
+                p="6"
+                bg="blue.400"
+                w="25%"
+                fontWeight="bold"
+                onClick={() => {
+                  navigate("/");
+                  signUserOut();
+                }}
+              >
+                Sign Out
+              </Button>
+              <Spacer />
+              <Button
+                mt="6"
+                mx="3"
+                p="6"
+                bg="blue.400"
+                w="25%"
+                fontWeight="bold"
+                onClick={() => {
+                  saveChange();
+                }}
+              >
+                Update Profile
+              </Button>
+            </Flex>
           </Flex>
         </Flex>
       </Flex>

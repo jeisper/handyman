@@ -10,6 +10,8 @@ import Skills from "./Skills";
 import Summary from "./Summary";
 import bg from "../../Assets/images/handyback2.jpg";
 import { addDoc } from "firebase/firestore";
+import newbg from "../../Assets/images/new_bg.jpeg";
+import Footer from "../../components/footer";
 
 const defaultData = {
   name: {
@@ -66,6 +68,7 @@ function Form() {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+    navigate("/profile");
   };
 
   let currentContent = <Flex>Loading</Flex>;
@@ -126,14 +129,15 @@ function Form() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={bg}
+        bgImage={newbg}
         bgRepeat="no-repeat"
-        bgSize="100%"
+        bgSize="cover"
       >
         <Flex w="100%" justify="center" mt="10vh">
           {currentContent}
         </Flex>
       </Flex>
+      <Footer />
     </Flex>
   );
 }
