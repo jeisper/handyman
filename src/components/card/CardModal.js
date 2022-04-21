@@ -10,8 +10,10 @@ import {
   Spacer,
   Flex,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function CardModal({ data, isOpen, onClose }) {
+  const navigate = useNavigate();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -53,7 +55,14 @@ function CardModal({ data, isOpen, onClose }) {
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button bg="blue.300">Make Review</Button>
+          <Button
+            bg="blue.300"
+            onClick={() => {
+              navigate("/review");
+            }}
+          >
+            Make Review
+          </Button>
           <Spacer />
           <Button bg="blue.300">Contact</Button>
         </ModalFooter>
