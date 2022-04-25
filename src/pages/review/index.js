@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
 import newbg from "../../Assets/images/new_bg.jpeg";
 import ReviewData from "./ReviewData";
+import Submitted from "./Submitted";
 
 function Review() {
   const navigate = useNavigate();
-
   const [currentStep, setCurrentStep] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
+
 
   useEffect(() => {
     const auth = getAuth();
@@ -23,6 +24,25 @@ function Review() {
       }
     });
   }, []);
+
+  let currentContent = <Flex>Loading</Flex>;
+
+  const goNext = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+  switch (currentStep) {
+    case 0:
+      currentContent = <ReviewData goNext={goNext} />;
+      break;
+
+    case 1:
+      currentContent = <Submitted />;
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <Flex w="100%" flexDir="column">
@@ -37,7 +57,7 @@ function Review() {
         bgSize="100%"
       >
         <Flex w="100%" justify="center">
-          <ReviewData />;
+        {currentContent}
         </Flex>
       </Flex>
     </Flex>

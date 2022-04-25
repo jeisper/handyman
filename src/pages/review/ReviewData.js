@@ -1,12 +1,17 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex ,  Spacer } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { VStack } from "@chakra-ui/react";
 import { StackDivider } from "@chakra-ui/react";
 import RatingStar from "../../components/rating";
 import { FormControl, FormLabel } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 
-function ReviewData() {
+
+function ReviewData({ goNext }) {
   const navigate = useNavigate();
+
+  const [handymanRating, setHandymanRating] = useState(0);
+
 
   return (
     <Flex
@@ -24,9 +29,6 @@ function ReviewData() {
         spacing={4}
         align="stretch"
       >
-        <FormLabel as="legend" m="1vw">
-          ID of Handyman
-        </FormLabel>
 
         <FormControl as="fieldset" m="1vw">
           <FormLabel as="legend">Cost</FormLabel>
@@ -42,14 +44,33 @@ function ReviewData() {
           <FormLabel as="legend">Performance</FormLabel>
           <RatingStar />
         </FormControl>
+
+        <FormControl as="fieldset" m="1vw">
+          <FormLabel as="legend">Overall</FormLabel>
+          <RatingStar />
+        </FormControl>
       </VStack>
+      
+      
 
       <Flex justify="center">
-        <Button
+      <Button
+          m="2vw"
+          fontSize="2vh"
+          alignContent="left"
+          onClick={() => {
+            navigate("/customer");
+          }}
+        >
+          Cancel
+        </Button>
+        <Spacer />
+
+      <Button
           m="2vw"
           fontSize="2vh"
           onClick={() => {
-            navigate("/customer");
+            goNext();
           }}
         >
           Send Review

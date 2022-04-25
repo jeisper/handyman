@@ -1,10 +1,18 @@
 import { Flex } from "@chakra-ui/react";
 import ReactStars from "react-rating-stars-component";
+import React, { useEffect, useState } from "react";
 
 function RatingStar() {
+
+  const [handymanRating, setHandymanRating] = useState(0);
+
   const ratingChanged = (newRating) => {
-    console.log(newRating);
+    setHandymanRating(newRating);
   };
+
+  console.log({handymanRating});
+
+
 
   return (
     <Flex>
