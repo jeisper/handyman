@@ -1,13 +1,20 @@
-import { Button, Flex, Heading, Image, Spacer, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Heading,
+  Spacer,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
 import Footer from "../../components/footer";
 import bg from "../../Assets/images/handyback2.jpg";
-import newbg from "../../Assets/images/new_bg.jpeg";
 
 function Landing() {
   const navigate = useNavigate();
+  const [isOnmobile] = useMediaQuery("(max-width: 768px)");
 
   return (
     <Flex w="100%" flexDir="column">
@@ -17,7 +24,7 @@ function Landing() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={newbg}
+        bgImage={bg}
         bgRepeat="no-repeat"
         bgSize="cover"
       >

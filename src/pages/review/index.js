@@ -3,13 +3,11 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
-import newbg from "../../Assets/images/new_bg.jpeg";
+import bg from "../../Assets/images/handyback2.jpg";
 import ReviewData from "./ReviewData";
 
 function Review() {
   const navigate = useNavigate();
-
-  const [currentStep, setCurrentStep] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -17,6 +15,7 @@ function Review() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+
         console.log("User signed in with id: ", user.uid);
       } else {
         console.log("User is not signed in ");
@@ -32,7 +31,7 @@ function Review() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={newbg}
+        bgImage={bg}
         bgRepeat="no-repeat"
         bgSize="100%"
       >

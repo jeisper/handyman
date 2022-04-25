@@ -2,7 +2,6 @@ import { Button, Flex, Heading, Select } from "@chakra-ui/react";
 import { collection, getDocs } from "firebase/firestore/lite";
 import React, { useEffect, useState } from "react";
 import bg from "../../Assets/images/handyback2.jpg";
-import newbg from "../../Assets/images/new_bg.jpeg";
 import Card from "../../components/card";
 import Footer from "../../components/footer";
 import NavBar from "../../components/navbar";
@@ -35,7 +34,7 @@ function Customer() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={newbg}
+        bgImage={bg}
         bgRepeat="no-repeat"
         bgSize="cover"
         color="white"

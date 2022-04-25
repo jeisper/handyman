@@ -4,9 +4,27 @@ import { VStack } from "@chakra-ui/react";
 import { StackDivider } from "@chakra-ui/react";
 import RatingStar from "../../components/rating";
 import { FormControl, FormLabel } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function ReviewData() {
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+
+        console.log("User signed in with id: ", user.uid);
+      } else {
+        console.log("User is not signed in ");
+      }
+    });
+  }, []);
+  // console.log("the user id here is:", currentUser.uid);
+  // console.log("the user name here is:", currentUser.displayName);
 
   return (
     <Flex
@@ -25,7 +43,7 @@ function ReviewData() {
         align="stretch"
       >
         <FormLabel as="legend" m="1vw">
-          ID of Handyman
+          {/* <Flex> HandyMan Name: {currentUser.displayName}</Flex> */}
         </FormLabel>
 
         <FormControl as="fieldset" m="1vw">

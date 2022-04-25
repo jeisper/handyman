@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useToast } from "@chakra-ui/react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore/lite";
 import React, { useEffect, useState } from "react";
@@ -9,8 +9,6 @@ import ProfileData from "./ProfileData";
 import Skills from "./Skills";
 import Summary from "./Summary";
 import bg from "../../Assets/images/handyback2.jpg";
-import { addDoc } from "firebase/firestore";
-import newbg from "../../Assets/images/new_bg.jpeg";
 import Footer from "../../components/footer";
 
 const defaultData = {
@@ -38,6 +36,7 @@ const defaultData = {
 
 function Form() {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const [currentStep, setCurrentStep] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
@@ -121,7 +120,7 @@ function Form() {
     default:
       break;
   }
-  return (
+  return currentUser ? (
     <Flex w="100%" flexDir="column">
       <NavBar />
       <Flex
@@ -129,13 +128,36 @@ function Form() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={newbg}
+        bgImage={bg}
         bgRepeat="no-repeat"
         bgSize="cover"
       >
         <Flex w="100%" justify="center" mt="10vh">
           {currentContent}
         </Flex>
+      </Flex>
+      <Footer />
+    </Flex>
+  ) : (
+    <Flex
+      flexDir="column"
+      w="100%"
+      minH="100vh"
+      bgImage={bg}
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      alignItems="center"
+      alignContent="center"
+    >
+      <NavBar />
+      <Flex
+        minH="100vh"
+        alignItems="center"
+        alignContent="center"
+        fontSize="5xl"
+        color="white"
+      >
+        Login to your account first to Sign Up
       </Flex>
       <Footer />
     </Flex>

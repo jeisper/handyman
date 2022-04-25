@@ -6,7 +6,6 @@ import {
   Image,
   Spacer,
   Textarea,
-  useToast,
 } from "@chakra-ui/react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
@@ -16,9 +15,6 @@ import bg from "../../Assets/images/handyback2.jpg";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore/lite";
 import { db } from "../../firebase";
 import FormTextInputNotRequired from "../form/FormTextInput";
-import FormTextInput from "../form/FormTextInput";
-import { async } from "@firebase/util";
-import newbg from "../../Assets/images/new_bg.jpeg";
 
 function Profile() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -98,7 +94,7 @@ function Profile() {
         minH="100vh"
         flexWrap="wrap"
         flexDir="column"
-        bgImage={newbg}
+        bgImage={bg}
         bgRepeat="no-repeat"
         bgSize="cover"
       >
