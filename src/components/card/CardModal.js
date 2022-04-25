@@ -10,6 +10,7 @@ import {
   Spacer,
   Flex,
 } from "@chakra-ui/react";
+import ReactStars from "react-rating-stars-component";
 import { useNavigate } from "react-router-dom";
 
 function CardModal({ data, isOpen, onClose }) {
@@ -47,10 +48,32 @@ function CardModal({ data, isOpen, onClose }) {
               Email: {data.data.contact.email}
             </Flex>
             <Flex my="3" pl="3" borderRadius="10" border="1px">
-              Review Rating:{" "}
+              Summary: {data.data.summary}
             </Flex>
             <Flex my="3" pl="3" borderRadius="10" border="1px">
-              Summary: {data.data.summary}
+              Review Rating:
+              {
+                <ReactStars
+                  value={
+                    data.data.review && data.data.review.overall
+                      ? data.data.review.overall
+                      : 0
+                  }
+                  size={20}
+                  isHalf={true}
+                  edit={false}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#blue.900"
+                />
+              }
+            </Flex>
+            <Flex my="3" pl="3" borderRadius="10" border="1px">
+              Review Description:{" "}
+              {data.data.review && data.data.review.feedback
+                ? data.data.review.feedback
+                : "No Review"}
             </Flex>
           </Flex>
         </ModalBody>
@@ -58,10 +81,10 @@ function CardModal({ data, isOpen, onClose }) {
           <Button
             bg="blue.300"
             onClick={() => {
-              navigate("/review");
+              navigate("/review/" + data.data.id);
             }}
           >
-            Make Review
+            Review
           </Button>
           <Spacer />
           <Button bg="blue.300">Contact</Button>

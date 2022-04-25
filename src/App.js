@@ -14,7 +14,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/form" element={<Form />} />
         <Route path="/customer" element={<Customer />} />
-        <Route path="/review" element={<Review />} />
+        <Route path="/review/:id" element={<Review />} />
       </Routes>
     </Router>
   );

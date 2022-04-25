@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
 import bg from "../../Assets/images/handyback2.jpg";
 import ReviewData from "./ReviewData";
+import Footer from "../../components/footer";
 
 function Review() {
-  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -33,12 +33,13 @@ function Review() {
         flexDir="column"
         bgImage={bg}
         bgRepeat="no-repeat"
-        bgSize="100%"
+        bgSize="cover"
       >
-        <Flex w="100%" justify="center">
+        <Flex w="100%" justify="center" mt="5">
           <ReviewData />;
         </Flex>
       </Flex>
+      <Footer />
     </Flex>
   );
 }

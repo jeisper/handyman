@@ -64,6 +64,7 @@ function Form() {
           merge: true,
         }
       );
+      toast("Profile Submited");
     } catch (e) {
       console.error("Error adding document: ", e);
     }

@@ -1,6 +1,7 @@
 import { Flex, useDisclosure } from "@chakra-ui/react";
 
 import React from "react";
+import ReactStars from "react-rating-stars-component";
 import CardModal from "./CardModal";
 
 function Card(data) {
@@ -35,6 +36,22 @@ function Card(data) {
       </Flex>
       <Flex my="1" ml="3">
         Review :
+        {
+          <ReactStars
+            value={
+              data.data.review && data.data.review.overall
+                ? data.data.review.overall
+                : 0
+            }
+            size={20}
+            isHalf={true}
+            edit={false}
+            emptyIcon={<i className="far fa-star"></i>}
+            halfIcon={<i className="fa fa-star-half-alt"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
+            activeColor="blue.900"
+          />
+        }
       </Flex>
       <CardModal
         data={data}

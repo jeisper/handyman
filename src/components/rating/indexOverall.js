@@ -2,20 +2,18 @@ import { Flex } from "@chakra-ui/react";
 import ReactStars from "react-rating-stars-component";
 import React, { useState } from "react";
 
-function RatingStar() {
-  const [handymanRating, setHandymanRating] = useState(0);
-
-  const ratingChanged = (newRating) => {
-    setHandymanRating(newRating);
-  };
-
-  // console.log("The HandyMan Rating is: ", handymanRating);
+function RatingStarOverall({ updateRating, feedbackData }) {
+  console.log("the feedbackData is:", feedbackData);
 
   return (
     <Flex>
       <ReactStars
         count={5}
-        onChange={ratingChanged}
+        onChange={(text) => {
+          const copy = { ...feedbackData };
+          copy.review.overall = text;
+          updateRating(copy);
+        }}
         size={35}
         isHalf={true}
         emptyIcon={<i className="far fa-star"></i>}
@@ -27,4 +25,4 @@ function RatingStar() {
   );
 }
 
-export default RatingStar;
+export default RatingStarOverall;

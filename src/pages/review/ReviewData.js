@@ -1,30 +1,41 @@
-import { Button, Flex } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { Button, Flex, Spacer, Textarea, useToast } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
 import { VStack } from "@chakra-ui/react";
 import { StackDivider } from "@chakra-ui/react";
 import RatingStar from "../../components/rating";
 import { FormControl, FormLabel } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
+import { db } from "../../firebase";
+import { doc, updateDoc } from "firebase/firestore/lite";
+
+import RatingStarOverall from "../../components/rating/indexOverall";
+
+const feedback = {
+  review: {
+    feedback: "",
+    overall: 0,
+  },
+};
 
 function ReviewData() {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState(null);
+  const toast = useToast();
 
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user);
+  const [handymanFeedback, setHandymanFeedback] = useState(feedback);
 
-        console.log("User signed in with id: ", user.uid);
-      } else {
-        console.log("User is not signed in ");
-      }
-    });
-  }, []);
-  // console.log("the user id here is:", currentUser.uid);
-  // console.log("the user name here is:", currentUser.displayName);
+  console.log("Feedback text", handymanFeedback);
+
+  const updateReview = async () => {
+    try {
+      const handymanRef = doc(db, "handyman-collection", id + "");
+      await updateDoc(handymanRef, handymanFeedback);
+      toast("Profile Submited");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+    navigate("/customer");
+  };
 
   return (
     <Flex
@@ -42,23 +53,45 @@ function ReviewData() {
         spacing={4}
         align="stretch"
       >
-        <FormLabel as="legend" m="1vw">
-          {/* <Flex> HandyMan Name: {currentUser.displayName}</Flex> */}
-        </FormLabel>
-
         <FormControl as="fieldset" m="1vw">
-          <FormLabel as="legend">Cost</FormLabel>
+          <FormLabel as="legend">Cost : </FormLabel>
           <RatingStar />
         </FormControl>
 
         <FormControl as="fieldset" m="1vw">
-          <FormLabel as="legend">Reliability</FormLabel>
+          <FormLabel as="legend">Reliability : </FormLabel>
           <RatingStar />
         </FormControl>
 
         <FormControl as="fieldset" m="1vw">
-          <FormLabel as="legend">Performance</FormLabel>
+          <FormLabel as="legend">Performance : </FormLabel>
           <RatingStar />
+        </FormControl>
+
+        <FormControl as="fieldset" m="1vw">
+          <FormLabel as="legend">Overall : </FormLabel>
+          <RatingStarOverall
+            updateRating={setHandymanFeedback}
+            feedbackData={handymanFeedback}
+          />
+        </FormControl>
+
+        <FormControl as="fieldset" m="1vw">
+          <FormLabel as="legend">FeedBack : </FormLabel>
+          <Textarea
+            h="32vh"
+            placeholder="FeedBack"
+            value={
+              handymanFeedback && handymanFeedback.review
+                ? handymanFeedback.review.feedback
+                : ""
+            }
+            onChange={(e) => {
+              const copy = { ...handymanFeedback };
+              copy.review.feedback = e.target.value;
+              setHandymanFeedback(copy);
+            }}
+          />
         </FormControl>
       </VStack>
 
@@ -66,8 +99,20 @@ function ReviewData() {
         <Button
           m="2vw"
           fontSize="2vh"
+          alignContent="left"
           onClick={() => {
             navigate("/customer");
+          }}
+        >
+          Cancel
+        </Button>
+        <Spacer />
+
+        <Button
+          m="2vw"
+          fontSize="2vh"
+          onClick={() => {
+            updateReview();
           }}
         >
           Send Review
