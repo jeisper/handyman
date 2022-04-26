@@ -30,8 +30,14 @@ function ReviewData() {
     try {
       const handymanRef = doc(db, "handyman-collection", id + "");
       await updateDoc(handymanRef, handymanFeedback);
-      toast("Profile Submited");
-    } catch (e) {
+      toast({
+        title: 'Review Submitted.',
+        description: "Review was successfully recorded",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      });
+        } catch (e) {
       console.error("Error adding document: ", e);
     }
     navigate("/customer");
