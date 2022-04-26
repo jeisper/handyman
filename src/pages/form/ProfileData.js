@@ -107,13 +107,20 @@ function ProfileData({ formData, updateFormData, goBack, goNext }) {
         />
       </Flex>
       <Flex justify="center">
-        <Button m="2vw" fontSize="3vh" alignContent="left" onClick={goBack}>
+        <Button
+          bg="blue.400"
+          m="2vw"
+          fontSize="3vh"
+          alignContent="left"
+          onClick={goBack}
+        >
           Cancel
         </Button>
         <Spacer />
 
         <IconButton
           m="2vw"
+          bg="blue.400"
           onClick={() => {
             // if (checkValidInput()) {
             goNext();

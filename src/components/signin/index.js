@@ -40,13 +40,21 @@ function SignIn() {
       {currentUser != null ? (
         <Flex
           h="100%"
+          mx="15px"
           justify="center"
           align="center"
+          flexWrap="wrap"
+          justifyContent="center"
           onClick={() => {
             nagivate("/profile");
           }}
         >
-          <Image w="50" h="50" borderRadius="50%" src={currentUser.photoURL} />
+          <Image
+            w="60px"
+            h="60px"
+            borderRadius="50%"
+            src={currentUser.photoURL}
+          />
         </Flex>
       ) : (
         <Button

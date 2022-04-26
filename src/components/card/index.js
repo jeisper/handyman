@@ -14,8 +14,8 @@ function Card(data) {
       bg="orange.200"
       justify="center"
       m="5"
-      h="20vh"
-      w="20vw"
+      h="200px"
+      w="300px"
       flexDir="column"
       color="black"
       onClick={() => {

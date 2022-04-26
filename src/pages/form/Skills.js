@@ -53,21 +53,11 @@ function Skills({ formData, updateFormData, goBack, goNext }) {
         Add Skill
       </Button>
       <Flex justify="center">
-        <IconButton placeContent="left" m="2vw" onClick={goBack}>
+        <IconButton placeContent="left" m="2vw" bg="blue.400" onClick={goBack}>
           <TiArrowLeftOutline fontSize="5vh" />
         </IconButton>
         <Spacer />
-        <Button
-          m="2vw"
-          fontSize="3vh"
-          alignContent="left"
-          // onClick={() => {
-          //   uploadDataToDatabase();
-          // }}
-        >
-          Save
-        </Button>
-        <IconButton placeContent="right" m="2vw" onClick={goNext}>
+        <IconButton placeContent="right" m="2vw" bg="blue.400" onClick={goNext}>
           <TiArrowRightOutline fontSize="35px" />
         </IconButton>
       </Flex>

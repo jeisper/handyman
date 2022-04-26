@@ -7,11 +7,9 @@ import {
   Spacer,
   Textarea,
 } from "@chakra-ui/react";
-import { TiArrowRightOutline, TiArrowLeftOutline } from "react-icons/ti";
-import { useNavigate } from "react-router-dom";
+import { TiArrowLeftOutline } from "react-icons/ti";
 
-function Summary({ formData, updateFormData, saveChange, goNext, goBack }) {
-  const navigate = useNavigate();
+function Summary({ formData, updateFormData, saveChange, goBack }) {
   const checkValidInput = () => {
     if (formData.summary === "") {
       alert("Insert Some Data to Proceed");
@@ -47,13 +45,14 @@ function Summary({ formData, updateFormData, saveChange, goNext, goBack }) {
       </FormControl>
 
       <Flex justify="center">
-        <IconButton placeContent="left" m="2vw" onClick={goBack}>
+        <IconButton placeContent="left" m="2vw" onClick={goBack} bg="blue.400">
           <TiArrowLeftOutline fontSize="5vh" />
         </IconButton>
         <Spacer />
         <Button
           m="2vw"
           fontSize="3vh"
+          bg="blue.400"
           alignContent="left"
           onClick={() => {
             saveChange();

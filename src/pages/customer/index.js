@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Select } from "@chakra-ui/react";
+import { Flex, Heading, Select, useMediaQuery } from "@chakra-ui/react";
 import { collection, getDocs } from "firebase/firestore/lite";
 import React, { useEffect, useState } from "react";
 import bg from "../../Assets/images/handyback2.jpg";
@@ -9,6 +9,7 @@ import { db } from "../../firebase";
 
 function Customer() {
   const [handyMan, setHandyMan] = useState([]);
+  const [isOnmobile] = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
     const getAllData = async () => {

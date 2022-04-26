@@ -111,9 +111,10 @@ function Profile() {
           >
             <Flex justifyContent="center">
               <Image
-                w="10vw"
-                h="10vh"
+                w="100px"
+                h="100px"
                 borderRadius="50%"
+                objectFit="cover"
                 src={currentUser.photoURL}
               />
             </Flex>
