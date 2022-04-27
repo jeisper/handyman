@@ -325,6 +325,7 @@ function Profile() {
           </Flex>
         </Flex>
       </Flex>
+      <Footer />
     </Flex>
   ) : (
     <Flex
