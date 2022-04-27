@@ -6,6 +6,7 @@ import {
   Image,
   Spacer,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
@@ -15,12 +16,13 @@ import bg from "../../Assets/images/handyback2.jpg";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore/lite";
 import { db } from "../../firebase";
 import FormTextInputNotRequired from "../form/FormTextInput";
+import Footer from "../../components/footer";
 
 function Profile() {
   const [currentUser, setCurrentUser] = useState(null);
   const [profileData, setProfileData] = useState(null);
 
-  //   const toast = useToast();
+  const toast = useToast();
   const navigate = useNavigate();
 
   const signUserOut = () => {
@@ -56,21 +58,17 @@ function Profile() {
     }
   }, [currentUser]);
 
-  console.log("The user is:", currentUser);
-  console.log("The data is:", profileData);
-
   const deleteProfileData = async () => {
     try {
       await deleteDoc(doc(db, "handyman-collection", currentUser.uid + ""));
       console.log("data was deleted");
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error deleting document: ", e);
     }
   };
 
   const saveChange = async () => {
     try {
-      console.log(profileData);
       await setDoc(
         doc(db, "handyman-collection", currentUser.uid + ""),
 
@@ -82,7 +80,7 @@ function Profile() {
       );
       console.log("data was updated");
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error updating document: ", e);
     }
   };
 
@@ -276,6 +274,13 @@ function Profile() {
                 onClick={() => {
                   deleteProfileData();
                   navigate("/");
+                  toast({
+                    title: "Profile Deleted.",
+                    description: "Profile was successfully deleted.",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                  });
                 }}
               >
                 Delete profile
@@ -305,6 +310,13 @@ function Profile() {
                 fontWeight="bold"
                 onClick={() => {
                   saveChange();
+                  toast({
+                    title: "Profile Updated.",
+                    description: "Profile was successfully updated.",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                  });
                 }}
               >
                 Update Profile
@@ -315,7 +327,48 @@ function Profile() {
       </Flex>
     </Flex>
   ) : (
-    "Loading"
+    <Flex
+      flexDir="column"
+      w="100%"
+      minH="100vh"
+      bgImage={bg}
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      alignItems="center"
+      alignContent="center"
+    >
+      <NavBar />
+      <Flex
+        flexDir="column"
+        alignItems="center"
+        alignContent="center"
+        minH="100vh"
+      >
+        <Flex
+          mt="35vh"
+          fontSize="5xl"
+          color="white"
+          alignItems="center"
+          alignContent="center"
+        >
+          Create your Profile first
+        </Flex>
+        <Button
+          bg="blue.500"
+          w="10vw"
+          h="5vh"
+          mx="8vh"
+          color="black"
+          fontSize="1xl"
+          onClick={() => {
+            navigate("/form");
+          }}
+        >
+          Sign up
+        </Button>
+      </Flex>
+      <Footer />
+    </Flex>
   );
 }
 

@@ -6,10 +6,12 @@ import {
   IconButton,
   Spacer,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 import { TiArrowLeftOutline } from "react-icons/ti";
 
 function Summary({ formData, updateFormData, saveChange, goBack }) {
+  const toast = useToast();
   const checkValidInput = () => {
     if (formData.summary === "") {
       alert("Insert Some Data to Proceed");
@@ -55,7 +57,16 @@ function Summary({ formData, updateFormData, saveChange, goBack }) {
           bg="blue.400"
           alignContent="left"
           onClick={() => {
-            saveChange();
+            if (checkValidInput()) {
+              saveChange();
+              toast({
+                title: "Profile Created.",
+                description: "Profile was successfully created.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+              });
+            }
           }}
         >
           Submit

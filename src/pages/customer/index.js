@@ -9,7 +9,6 @@ import { db } from "../../firebase";
 
 function Customer() {
   const [handyMan, setHandyMan] = useState([]);
-  const [isOnmobile] = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
     const getAllData = async () => {
@@ -17,15 +16,12 @@ function Customer() {
       const usersArray = [];
       allUsers.forEach((doc) => {
         usersArray.push({ id: doc.id, ...doc.data() });
-        console.log(doc.id, " => ", doc.data());
       });
       setHandyMan(usersArray);
     };
 
     getAllData();
   }, []);
-
-  console.log("line2: ", handyMan);
 
   return (
     <Flex w="100%" flexDir="column">

@@ -47,16 +47,13 @@ function Form() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-        console.log("User signed in with id: ", user.uid);
       } else {
-        console.log("User is not signed in ");
       }
     });
   }, []);
 
   const saveChange = async () => {
     try {
-      console.log(formData);
       await setDoc(
         doc(db, "handyman-collection", currentUser.uid + ""),
         formData,

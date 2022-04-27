@@ -1,6 +1,5 @@
 import { Flex } from "@chakra-ui/react";
 import ReactStars from "react-rating-stars-component";
-import React, { useState } from "react";
 
 function RatingStarOverall({ updateRating, feedbackData }) {
   console.log("the feedbackData is:", feedbackData);

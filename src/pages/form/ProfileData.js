@@ -4,8 +4,6 @@ import React from "react";
 import FormTextInput from "./FormTextInput";
 
 function ProfileData({ formData, updateFormData, goBack, goNext }) {
-  console.log(formData);
-
   const checkValidInput = () => {
     if (
       formData.name.fname === "" ||
@@ -122,9 +120,9 @@ function ProfileData({ formData, updateFormData, goBack, goNext }) {
           m="2vw"
           bg="blue.400"
           onClick={() => {
-            // if (checkValidInput()) {
-            goNext();
-            // }
+            if (checkValidInput()) {
+              goNext();
+            }
           }}
         >
           <TiArrowRightOutline fontSize="5vh" />

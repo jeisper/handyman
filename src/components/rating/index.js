@@ -8,9 +8,6 @@ function RatingStar() {
   const ratingChanged = (newRating) => {
     setHandymanRating(newRating);
   };
-
-  // console.log("The HandyMan Rating is: ", handymanRating);
-
   return (
     <Flex>
       <ReactStars

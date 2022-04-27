@@ -1,11 +1,4 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Spacer,
-  Text,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Button, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/navbar";
@@ -14,7 +7,6 @@ import bg from "../../Assets/images/handyback2.jpg";
 
 function Landing() {
   const navigate = useNavigate();
-  const [isOnmobile] = useMediaQuery("(max-width: 768px)");
 
   return (
     <Flex w="100%" flexDir="column">
@@ -29,18 +21,8 @@ function Landing() {
         bgSize="cover"
       >
         <Flex mt="20vh">
-          <Flex
-            // bg="pink"
-            w="100%"
-            h="100%"
-          >
-            <Flex
-              // bg="red"
-              w="50%"
-              h="50%"
-              flexDir="column"
-              color="white"
-            >
+          <Flex w="100%" h="100%">
+            <Flex w="50%" h="50%" flexDir="column" color="white">
               <Flex flexDir="column" ml="10vw">
                 <Heading fontSize="5xl">Easy Handyman</Heading>
                 <Text fontSize="2xl">A handyman`s best pal</Text>
@@ -73,14 +55,7 @@ function Landing() {
               </Flex>
             </Flex>
             <Spacer />
-            <Flex
-              // bg="blue"
-              w="50%"
-              h="50%"
-              flexDir="column"
-              color="white"
-              fontSize="1xl"
-            >
+            <Flex w="50%" h="50%" flexDir="column" color="white" fontSize="1xl">
               <Flex
                 flexDir="column"
                 m="2"
