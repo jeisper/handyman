@@ -268,7 +268,7 @@ function Profile() {
                 mt="6"
                 mx="3"
                 p="6"
-                bg="blue.400"
+                bg="blue.500"
                 w="25%"
                 fontWeight="bold"
                 onClick={() => {
@@ -290,7 +290,7 @@ function Profile() {
                 mt="6"
                 mx="3"
                 p="6"
-                bg="blue.400"
+                bg="blue.500"
                 w="25%"
                 fontWeight="bold"
                 onClick={() => {
@@ -305,7 +305,7 @@ function Profile() {
                 mt="6"
                 mx="3"
                 p="6"
-                bg="blue.400"
+                bg="blue.500"
                 w="25%"
                 fontWeight="bold"
                 onClick={() => {
@@ -354,19 +354,36 @@ function Profile() {
         >
           Create your Profile first
         </Flex>
-        <Button
-          bg="blue.500"
-          w="10vw"
-          h="5vh"
-          mx="8vh"
-          color="black"
-          fontSize="1xl"
-          onClick={() => {
-            navigate("/form");
-          }}
-        >
-          Sign up
-        </Button>
+        <Flex displayDir="row">
+          <Button
+            bg="blue.500"
+            mt="6"
+            mx="3"
+            p="6"
+            w="150px"
+            color="black"
+            fontSize="1xl"
+            onClick={() => {
+              navigate("/form");
+            }}
+          >
+            Sign up
+          </Button>
+          <Button
+            mt="6"
+            mx="3"
+            p="6"
+            bg="blue.500"
+            w="150px"
+            fontWeight="bold"
+            onClick={() => {
+              navigate("/");
+              signUserOut();
+            }}
+          >
+            Sign Out
+          </Button>
+        </Flex>
       </Flex>
       <Footer />
     </Flex>

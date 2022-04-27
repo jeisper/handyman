@@ -105,7 +105,7 @@ function ReviewData() {
         <Button
           m="2vw"
           fontSize="2vh"
-          bg="blue.400"
+          bg="blue.500"
           alignContent="left"
           onClick={() => {
             navigate("/customer");
@@ -117,7 +117,7 @@ function ReviewData() {
 
         <Button
           m="2vw"
-          bg="blue.400"
+          bg="blue.500"
           fontSize="2vh"
           onClick={() => {
             updateReview();

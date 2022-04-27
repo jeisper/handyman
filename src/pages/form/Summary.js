@@ -47,14 +47,14 @@ function Summary({ formData, updateFormData, saveChange, goBack }) {
       </FormControl>
 
       <Flex justify="center">
-        <IconButton placeContent="left" m="2vw" onClick={goBack} bg="blue.400">
+        <IconButton placeContent="left" m="2vw" onClick={goBack} bg="blue.500">
           <TiArrowLeftOutline fontSize="5vh" />
         </IconButton>
         <Spacer />
         <Button
           m="2vw"
           fontSize="3vh"
-          bg="blue.400"
+          bg="blue.500"
           alignContent="left"
           onClick={() => {
             if (checkValidInput()) {

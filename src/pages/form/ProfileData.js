@@ -106,7 +106,7 @@ function ProfileData({ formData, updateFormData, goBack, goNext }) {
       </Flex>
       <Flex justify="center">
         <Button
-          bg="blue.400"
+          bg="blue.500"
           m="2vw"
           fontSize="3vh"
           alignContent="left"
@@ -118,7 +118,7 @@ function ProfileData({ formData, updateFormData, goBack, goNext }) {
 
         <IconButton
           m="2vw"
-          bg="blue.400"
+          bg="blue.500"
           onClick={() => {
             if (checkValidInput()) {
               goNext();

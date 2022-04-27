@@ -53,11 +53,11 @@ function Skills({ formData, updateFormData, goBack, goNext }) {
         Add Skill
       </Button>
       <Flex justify="center">
-        <IconButton placeContent="left" m="2vw" bg="blue.400" onClick={goBack}>
+        <IconButton placeContent="left" m="2vw" bg="blue.500" onClick={goBack}>
           <TiArrowLeftOutline fontSize="5vh" />
         </IconButton>
         <Spacer />
-        <IconButton placeContent="right" m="2vw" bg="blue.400" onClick={goNext}>
+        <IconButton placeContent="right" m="2vw" bg="blue.500" onClick={goNext}>
           <TiArrowRightOutline fontSize="35px" />
         </IconButton>
       </Flex>
