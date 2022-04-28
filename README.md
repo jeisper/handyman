@@ -35,9 +35,9 @@ On the popUp mentioned in the last section When pressing the button Review, the 
 
 Future Implementation:
 
-Complete the filter implementation.
-Make a contact form for the card on the Handyman PopUp.
-Contact Us page.
+Complete the filter implementation, 
+Make a contact form for the card on the Handyman PopUp, 
+Contact Us page, 
 About Us page.
 
 
@@ -46,10 +46,10 @@ About Us page.
 Technical Details:
 
 Frontend -
-React.js framework
-ChakraUI design framework
-React Icons library
-Firebase Google Authentication
+React.js framework, 
+ChakraUI design framework, 
+React Icons library, 
+Firebase Google Authentication, 
 
 Backend - 
 FireStore database
