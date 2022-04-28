@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+Setup instructions:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+First you will need npm/node.
+Clone the project and cd into the directory cd handyman
+Type npm i command to install all necessary packages.
+Next you need to start the development server for the react project by running npm run start This will open the project on your localhost port
 
-## Available Scripts
 
-In the project directory, you can run:
+Signing in (authentication) and filling out the form/form validation:
+  This website makes possible for a handyman to find customer and a customer to find a handyman.
+  For the handyman to create a profile he need to signIn using his google account, Then after he signIn. He can go to the form page and fill up all his informations,
+at the end when pressing Submit all the data will be sent to the database and stored using his google account ID. 
+  Now The handyMan can access his profile with all the information that was given by him and on the profile page. The handyman will be able to delete profile, update information and signOut of the account. 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Customer Perspective:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  When in the Landing page the customer will be able to have access to all the handyman going to the browse page without the need to SignIn or create a profile.
+  When in the customer page, the customer will be able to filter the handyman by category or area of work desired. 
+  On the customer page will be multiples handymen with just a breaf about each one and to get more information about them, the customer can click on the card then a pop up will show a more detailed information about the handyman. In this popup The customer will also be able to leave a Review and for future implementation the customer will be able to send a contact email through the form that will be implemented on the Contact button.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Leaving a Review:
 
-### `npm run build`
+On the popUp mentioned in the last section When pressing the button Review, the customer will be redirected to the Review page, where will be available a review functionality, As soon as the customer press to submit the review it will be stored on the handyman collection on the database and will be displayed on the customer page, so future customer can have access to the review made.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Future Implementation:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Complete the filter implementation.
+Make a contact form for the card on the Handyman PopUp.
+Contact Us page.
+About Us page.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Technical Details:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Frontend -
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+React.js framework
+ChakraUI design framework
+React Icons library
+Firebase Google Authentication
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Backend - 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+FireStore database
