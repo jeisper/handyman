@@ -26,7 +26,6 @@ Customer Perspective:
 
 
 
-
 Leaving a Review:
 
 On the popUp mentioned in the last section When pressing the button Review, the customer will be redirected to the Review page, where will be available a review functionality, As soon as the customer press to submit the review it will be stored on the handyman collection on the database and will be displayed on the customer page, so future customer can have access to the review made.
