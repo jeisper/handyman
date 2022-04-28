@@ -47,12 +47,10 @@ About Us page.
 Technical Details:
 
 Frontend -
-
 React.js framework
 ChakraUI design framework
 React Icons library
 Firebase Google Authentication
 
 Backend - 
-
 FireStore database
